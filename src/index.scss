@@ -1,0 +1,134 @@
+body {
+  font-family: Helvetica, Arial, sans-serif;
+  line-height: 1.4;
+  margin: 0;
+  overflow: hidden;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.app {
+  display: flex;
+  height: 100vh;
+}
+
+.main,
+.sidebar {
+  height: 100%;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+.main {
+  order: 2; // appear on the right
+  flex: 1;
+  padding: 15px 30px;
+  overflow-x: hidden;
+  overflow-y: auto;
+
+  h1 {
+    font-size: 2rem;
+    margin-top: 0;
+    margin-bottom: 1rem;
+    word-wrap: break-word;
+  }
+}
+
+.gist {
+  h2 {
+    margin-top: 2rem;
+    margin-bottom: .5rem;
+    font-size: 1rem;
+    padding-bottom: .2rem;
+    text-transform: uppercase;
+  }
+
+  &-file {
+    border: 1px solid #DEDEDE;
+    word-wrap: break-word;
+
+    h3 {
+      padding: 10px;
+      font-size: .8rem;
+      margin: 0;
+      border-bottom: 1px solid #DEDEDE;
+    }
+
+    &-body {
+      padding: 10px;
+
+      pre,
+      p {
+        margin: 0;
+      }
+
+      pre {
+        overflow: auto;
+      }
+    }
+  }
+
+  &-file + &-file {
+    margin-top: 15px;
+  }
+}
+
+.sidebar {
+  order: 1; // appear on the left
+  flex: 0 0 200px;
+  min-width: 200px;
+  padding: 15px 0 0;
+  height: 100%;
+  background-color: #f7f7f7;
+  display: flex;
+  flex-flow: column;
+
+  &-header {
+    flex: 0;
+    font-size: 1rem;
+    margin: 0;
+    padding: 0 15px 1rem;
+  }
+
+  &-listing {
+    flex: 1 1 auto;
+    margin: 0;
+    padding: 0 0 15px;
+    list-style: none;
+    overflow-y: auto;
+
+    &-status {
+      padding: 5px 15px;
+      font-size: .8rem;
+    }
+
+    &-item-button {
+      padding: 5px 15px;
+      appearance: none;
+      display: block;
+      width: 100%;
+      border: 0;
+      background-color: transparent;
+      font-weight: bold;
+      text-align: left;
+      font-size: .8rem;
+      word-wrap: break-word;
+      color: #666;
+
+      &:hover {
+        cursor: pointer;
+        color: #333;
+      }
+
+      &:focus {
+        outline: 0;
+      }
+
+      &.selected {
+        color: red;
+      }
+    }
+  }
+}
