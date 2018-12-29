@@ -1,6 +1,7 @@
 import React from "react"
+import { NavLink } from "react-router-dom"
 
-const Sidebar = ({ gists, selected, loaded, onClick }) => {
+const Sidebar = ({ gists, loaded }) => {
   let listing;
 
   if (gists.length) {
@@ -11,12 +12,13 @@ const Sidebar = ({ gists, selected, loaded, onClick }) => {
             key={gist.id}
             className="sidebar-listing-item"
           >
-            <button
-              className={`sidebar-listing-item-button${gist.id === selected ? " selected" : ""}`}
-              onClick={() => onClick(gist.id)}
+            <NavLink
+              className={`sidebar-listing-item-button`}
+              activeClassName="selected"
+              to={`/gists/${gist.id}`}
             >
               {gist.name}
-            </button>
+            </NavLink>
           </li>
         ))}
       </ol>

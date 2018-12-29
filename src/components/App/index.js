@@ -1,13 +1,13 @@
 import React from "react"
-import Main from "../Main";
-import Sidebar from "../Sidebar";
+import { BrowserRouter as Router } from "react-router-dom"
+import Main from "../Main"
+import Sidebar from "../Sidebar"
 
 class App extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      viewingGist: null,
       loaded: false,
       gists: {},
       listing: []
@@ -35,21 +35,17 @@ class App extends React.Component {
       });
   }
 
-  viewGist(id) {
-    this.setState({ viewingGist: id });
-  }
-
   render() {
     return (
-      <div className="app">
-        <Main gist={this.state.gists[this.state.viewingGist]} />
-        <Sidebar
-          gists={this.state.listing}
-          selected={this.state.viewingGist}
-          loaded={this.state.loaded}
-          onClick={(id) => this.viewGist(id)}
-        />
-      </div>
+      <Router>
+        <div className="app">
+          <Main gists={this.state.gists} />
+          <Sidebar
+            gists={this.state.listing}
+            loaded={this.state.loaded}
+          />
+        </div>
+      </Router>
     );
   }
 

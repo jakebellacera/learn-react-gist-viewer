@@ -1,14 +1,12 @@
 import React from "react"
+import { Route } from "react-router-dom"
 import Gist from "../Gist"
+import Home from "../Home";
 
-const Main = ({ gist }) => (
+const Main = ({ gists }) => (
   <div className="main">
-    {gist ? <Gist gist={gist} /> : (
-      <div className="main-welcome">
-        <h1>Welcome!</h1>
-        <p>Start viewing Gists by selecting one from the list on the left.</p>
-      </div>
-    )}
+    <Route exact path="/" component={Home} />
+    <Route path="/gists/:id" render={props => <Gist {...props} gists={gists} />} />
   </div>
 );
 
